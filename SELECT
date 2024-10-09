@@ -1,0 +1,53 @@
+-- Vyber všechny sloupce z tabulky manufacturers
+SELECT *
+FROM sql1.Manufacturers
+;
+
+-- Vyber všechny sloupce z tabulky sales
+SELECT *
+FROM sql1.Sales
+;
+
+-- Najděte všechny kategorie produktů z tabulky Products
+-- přejmenování sloupců ve výsledkové sadě
+SELECT DISTINCT Category AS Kategorie
+FROM sql1.Products
+;
+
+-- Z tabulky Products vypiš sloupce ProductID, Product, Category a Segment.
+SELECT ProductID, Product, Category, Segment
+FROM sql1.Products
+;
+
+-- Vyber jedinečné Regiony z tabulky Cities (aby tam žádný region nebyl dvakrát) a zobraz pouze první záznam.
+SELECT DISTINCT Region
+FROM sql1.Cities
+FETCH FIRST ROWS ONLY
+;
+
+-- vyber prodeje s productID 1
+SELECT *
+FROM sql1.Sales
+WHERE ProductID = 1
+;
+
+-- seřaď prodeje podle revenue sestupně
+SELECT *
+FROM sql1.Sales
+WHERE Revenue IS NOT NULL
+ORDER BY Revenue DESC
+;
+
+-- omezení výsledku na 5 řádků
+SELECT *
+FROM sql1.Sales
+WHERE Revenue IS NOT NULL
+ORDER BY Revenue DESC
+FETCH FIRST 5 ROWS ONLY
+;
+
+-- omezení prodejů na rok 2014
+SELECT *
+FROM sql1.Sales
+WHERE to_char(CalendarID, 'YYYY') = '2014'
+;
